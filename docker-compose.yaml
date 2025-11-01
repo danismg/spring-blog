@@ -1,0 +1,20 @@
+services:
+  db:
+    image: mysql:8.1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "3308:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=example
+
